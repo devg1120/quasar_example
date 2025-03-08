@@ -1,5 +1,5 @@
 {
-  "name": "Quasar Admin",
+  "name": "QuasarAdmin",
   "version": "0.0.1",
   "description": "Quasar Admin",
   "productName": "Quasar Admin",
@@ -29,7 +29,7 @@
     "quasar-app-extension-qhierarchy": "^1.0.15"
   },
   "engines": {
-    "node": "^18 || ^16 || ^14.19",
+    "node": "^20 || ^16 || ^14.19",
     "npm": ">= 6.13.4",
     "yarn": ">= 1.21.1"
   }
