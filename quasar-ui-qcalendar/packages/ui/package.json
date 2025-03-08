@@ -1,0 +1,279 @@
+{
+  "name": "@quasar/quasar-ui-qcalendar",
+  "version": "4.1.2",
+  "author": "Jeff Galbraith <jeff@quasar.dev>",
+  "productName": "QCalendar",
+  "description": "QCalendar - Day/Month/Week Calendars, Popups, Date Pickers, Schedules, Agendas, Planners and Tasks for your Vue Apps",
+  "license": "MIT",
+  "type": "module",
+  "module": "dist/index.esm.js",
+  "unpkg": "dist/index.umd.js",
+  "jsdelivr": "dist/index.umd.js",
+  "main": "dist/index.cjs.js",
+  "typings": "dist/types/index.d.ts",
+  "types": "dist/calendar.d.ts",
+  "web-types": "dist/web-types/web-types.json",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js"
+    },
+    "./index.min.css": {
+      "default": "./dist/index.min.css"
+    },
+    "./index.css": {
+      "default": "./dist/index.css"
+    },
+    "./index.rtl.min.css": {
+      "default": "./dist/index.rtl.min.css"
+    },
+    "./index.rtl.css": {
+      "default": "./dist/index.rtl.css"
+    },
+    "./QCalendar": {
+      "types": "./dist/types/components/QCalendar.d.ts",
+      "import": "./dist/QCalendar.esm.js",
+      "require": "./dist/QCalendar.cjs.js"
+    },
+    "./QCalendar.min.css": {
+      "default": "./dist/QCalendar.min.css"
+    },
+    "./QCalendar.css": {
+      "default": "./dist/QCalendar.css"
+    },
+    "./QCalendar.rtl.min.css": {
+      "default": "./dist/QCalendar.rtl.min.css"
+    },
+    "./QCalendar.rtl.css": {
+      "default": "./dist/QCalendar.rtl.css"
+    },
+    "./QCalendarAgenda": {
+      "types": "./dist/types/components/QCalendarAgenda.d.ts",
+      "import": "./dist/QCalendarAgenda.esm.js",
+      "require": "./dist/QCalendarAgenda.cjs.js"
+    },
+    "./QCalendarAgenda.min.css": {
+      "default": "./dist/QCalendarAgenda.min.css"
+    },
+    "./QCalendarAgenda.css": {
+      "default": "./dist/QCalendarAgenda.css"
+    },
+    "./QCalendarAgenda.rtl.min.css": {
+      "default": "./dist/QCalendarAgenda.rtl.min.css"
+    },
+    "./QCalendarAgenda.rtl.css": {
+      "default": "./dist/QCalendarAgenda.rtl.css"
+    },
+    "./QCalendarDay": {
+      "types": "./dist/types/components/QCalendarDay.d.ts",
+      "import": "./dist/QCalendarDay.esm.js",
+      "require": "./dist/QCalendarDay.cjs.js"
+    },
+    "./QCalendarDay.min.css": {
+      "default": "./dist/QCalendarDay.min.css"
+    },
+    "./QCalendarDay.css": {
+      "default": "./dist/QCalendarDay.css"
+    },
+    "./QCalendarDay.rtl.min.css": {
+      "default": "./dist/QCalendarDay.rtl.min.css"
+    },
+    "./QCalendarDay.rtl.css": {
+      "default": "./dist/QCalendarDay.rtl.css"
+    },
+    "./QCalendarMonth": {
+      "types": "./dist/types/components/QCalendarMonth.d.ts",
+      "import": "./dist/QCalendarMonth.esm.js",
+      "require": "./dist/QCalendarMonth.cjs.js"
+    },
+    "./QCalendarMonth.min.css": {
+      "default": "./dist/QCalendarMonth.min.css"
+    },
+    "./QCalendarMonth.css": {
+      "default": "./dist/QCalendarMonth.css"
+    },
+    "./QCalendarMonth.rtl.min.css": {
+      "default": "./dist/QCalendarMonth.rtl.min.css"
+    },
+    "./QCalendarMonth.rtl.css": {
+      "default": "./dist/QCalendarMonth.rtl.css"
+    },
+    "./QCalendarResource": {
+      "types": "./dist/types/components/QCalendarResource.d.ts",
+      "import": "./dist/QCalendarResource.esm.js",
+      "require": "./dist/QCalendarResource.cjs.js"
+    },
+    "./QCalendarResource.min.css": {
+      "default": "./dist/QCalendarResource.min.css"
+    },
+    "./QCalendarResource.css": {
+      "default": "./dist/QCalendarResource.css"
+    },
+    "./QCalendarResource.rtl.min.css": {
+      "default": "./dist/QCalendarResource.rtl.min.css"
+    },
+    "./QCalendarResource.rtl.css": {
+      "default": "./dist/QCalendarResource.rtl.css"
+    },
+    "./QCalendarScheduler": {
+      "types": "./dist/types/components/QCalendarScheduler.d.ts",
+      "import": "./dist/QCalendarScheduler.esm.js",
+      "require": "./dist/QCalendarScheduler.cjs.js"
+    },
+    "./QCalendarScheduler.min.css": {
+      "default": "./dist/QCalendarScheduler.min.css"
+    },
+    "./QCalendarScheduler.css": {
+      "default": "./dist/QCalendarScheduler.css"
+    },
+    "./QCalendarScheduler.rtl.min.css": {
+      "default": "./dist/QCalendarScheduler.rtl.min.css"
+    },
+    "./QCalendarScheduler.rtl.css": {
+      "default": "./dist/QCalendarScheduler.rtl.css"
+    },
+    "./QCalendarTask": {
+      "types": "./dist/types/components/QCalendarTask.d.ts",
+      "import": "./dist/QCalendarTask.esm.js",
+      "require": "./dist/QCalendarTask.cjs.js"
+    },
+    "./QCalendarTask.min.css": {
+      "default": "./dist/QCalendarTask.min.css"
+    },
+    "./QCalendarTask.css": {
+      "default": "./dist/QCalendarTask.css"
+    },
+    "./QCalendarTask.rtl.min.css": {
+      "default": "./dist/QCalendarTask.rtl.min.css"
+    },
+    "./QCalendarTask.rtl.css": {
+      "default": "./dist/QCalendarTask.rtl.css"
+    },
+    "./Timestamp": {
+      "types": "./dist/types/utils/Timestamp.d.ts",
+      "import": "./dist/Timestamp.esm.js",
+      "require": "./dist/Timestamp.cjs.js"
+    },
+    "./QCalendarTransitions.min.css": {
+      "default": "./dist/QCalendarTransitions.min.css"
+    },
+    "./QCalendarTransitions.css": {
+      "default": "./dist/QCalendarTransitions.css"
+    },
+    "./QCalendarTransitions.rtl.min.css": {
+      "default": "./dist/QCalendarTransitions.rtl.min.css"
+    },
+    "./QCalendarTransitions.rtl.css": {
+      "default": "./dist/QCalendarTransitions.rtl.css"
+    },
+    "./QCalendarVariables.min.css": {
+      "default": "./dist/QCalendarVariables.min.css"
+    },
+    "./QCalendarVariables.css": {
+      "default": "./dist/QCalendarVariables.css"
+    },
+    "./QCalendarVariables.rtl.min.css": {
+      "default": "./dist/QCalendarVariables.rtl.min.css"
+    },
+    "./QCalendarVariables.rtl.css": {
+      "default": "./dist/QCalendarVariables.rtl.css"
+    },
+    "./*": "./*"
+  },
+  "scripts": {
+    "lint": "eslint -c ./eslint.config.mjs \"./**/*.{ts,js,cjs,mjs,vue}\"",
+    "dev": "cd dev && pnpm run dev && cd ..",
+    "dev:umd": "pnpm run build && tsx build/script.open-umd.ts",
+    "dev:ssr": "cd dev && pnpm run 'dev:ssr' && cd ..",
+    "dev:ios": "cd dev && pnpm run 'dev:ios' && cd ..",
+    "dev:android": "cd dev && pnpm run 'dev:android' && cd ..",
+    "dev:electron": "cd dev && pnpm run 'dev:electron' && cd ..",
+    "build": "pnpm build:types && tsx build/index.ts",
+    "build:js": "tsx build/script.javascript.ts",
+    "build:css": "tsx build/script.css.ts",
+    "build:api": "tsx build/build.api.ts",
+    "build:app-ext": "tsx build/script.app-ext.ts",
+    "build:types:old": "tsc --emitDeclarationOnly --declarationDir dist/types",
+    "build:types": "npx -p typescript tsc --declaration --allowJs --emitDeclarationOnly --target es2020 --project tsconfig.json --outDir dist/types"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/hawkeye64"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quasarframework/quasar-ui-qcalendar.git"
+  },
+  "bugs": "https://github.com/quasarframework/quasar-ui-qcalendar/issues",
+  "homepage": "https://github.com/quasarframework/quasar-ui-qcalendar",
+  "keywords": [
+    "quasar",
+    "quasarframework",
+    "calendar",
+    "daily",
+    "weekly",
+    "monthly",
+    "events",
+    "reminders",
+    "agenda",
+    "resource",
+    "schedule",
+    "task",
+    "planner",
+    "range selection"
+  ],
+  "devDependencies": {
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-buble": "^1.0.3",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@rollup/plugin-typescript": "^12.1.2",
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^22.13.2",
+    "@types/rtlcss": "^3.5.4",
+    "@types/uglify-js": "^3.17.5",
+    "autoprefixer": "^10.4.20",
+    "cssnano": "^7.0.6",
+    "dotenv": "^16.4.7",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^7.2.1",
+    "eslint-plugin-vue": "^9.32.0",
+    "eslint-webpack-plugin": "^4.2.0",
+    "fs-extra": "^11.3.0",
+    "kolorist": "^1.8.0",
+    "open": "^10.1.0",
+    "postcss": "^8.5.2",
+    "quasar": "^2.17.7",
+    "rimraf": "^6.0.1",
+    "rollup": "^4.34.6",
+    "rtlcss": "^4.3.0",
+    "sass-embedded": "^1.83.4",
+    "table": "^6.9.0",
+    "tinyglobby": "^0.2.10",
+    "tsx": "^4.19.2",
+    "typescript": "~5.7.3",
+    "uglify-js": "^3.19.3",
+    "vue-jest": "^5.0.0-alpha.8",
+    "webpack-merge": "^6.0.1",
+    "zlib": "^1.0.5"
+  },
+  "browserslist": [
+    "last 4 Chrome versions",
+    "last 4 Firefox versions",
+    "last 2 Edge versions",
+    "last 4 Safari versions",
+    "last 4 Android versions",
+    "last 4 ChromeAndroid versions",
+    "last 4 FirefoxAndroid versions",
+    "last 4 iOS versions"
+  ]
+}

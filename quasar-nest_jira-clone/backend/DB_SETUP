@@ -1,0 +1,126 @@
+
+# lsof -i:5432
+
+postgres 719 postgres    5u  IPv4   7545      0t0  TCP localhost:postgresql (LISTEN)
+
+# systemctl status postgresql
+
+############################### psql
+# sudo -u postgres psql
+
+バージョン確認
+postgres=# select version();
+-----------------------------
+ PostgreSQL 14.17 (Ubuntu 14.17-0ubuntu0.22.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0, 64-bit
+(1 row)
+
+パスワード変更
+postgres=# ALTER USER postgres WITH PASSWORD 'postgres';
+
+############################## setting
+https://qiita.com/nanbuwks/items/846cf3536a82a2798555
+
+
+/etc/postgresql/14/main/postgresql.conf
+/etc/postgresql/14/main/pg_hba.conf
+
+############################## restart
+# systemctl restart postgresql.service
+
+
+psql -h 127.0.0.1  -U postgres -d postgres
+Password for user postgres: postgres
+
+
+データベース作成
+
+create database "jira-clone";
+
+
+#
+npm run start
+
+#######################################
+
+# sudo -u postgres psql
+
+postgres=# \l
+                             List of databases
+    Name    |  Owner   | Encoding | Collate | Ctype |   Access privileges   
+------------+----------+----------+---------+-------+-----------------------
+ jira-clone | postgres | LATIN1   | en_US   | en_US | 
+ postgres   | postgres | LATIN1   | en_US   | en_US | 
+ template0  | postgres | LATIN1   | en_US   | en_US | =c/postgres          +
+            |          |          |         |       | postgres=CTc/postgres
+ template1  | postgres | LATIN1   | en_US   | en_US | =c/postgres          +
+            |          |          |         |       | postgres=CTc/postgres
+(4 rows)
+
+jira-clone=# \c  "jira-clone"
+You are now connected to database "jira-clone" as user "postgres".
+
+jira-clone=# \z
+                                                  Access privileges
+ Schema |                     Name                     |   Type   | Access privileges | Column privileges | Policies 
+--------+----------------------------------------------+----------+-------------------+-------------------+----------
+ public | board_entity                                 | table    |                   |                   | 
+ public | board_entity_id_seq                          | sequence |                   |                   | 
+ public | column_entity                                | table    |                   |                   | 
+ public | column_entity_id_seq                         | sequence |                   |                   | 
+ public | comment_entity                               | table    |                   |                   | 
+ public | comment_entity_id_seq                        | sequence |                   |                   | 
+ public | issue_entity                                 | table    |                   |                   | 
+ public | issue_entity_id_seq                          | sequence |                   |                   | 
+ public | issue_entity_watchers_user_entity            | table    |                   |                   | 
+ public | notification_entity                          | table    |                   |                   | 
+ public | notification_entity_id_seq                   | sequence |                   |                   | 
+ public | project_entity                               | table    |                   |                   | 
+ public | project_entity_id_seq                        | sequence |                   |                   | 
+ public | public_file_entity                           | table    |                   |                   | 
+ public | public_file_entity_id_seq                    | sequence |                   |                   | 
+ public | team_entity                                  | table    |                   |                   | 
+ public | team_entity_id_seq                           | sequence |                   |                   | 
+ public | team_entity_users_user_entity                | table    |                   |                   | 
+ public | user_entity                                  | table    |                   |                   | 
+ public | user_entity_favorite_boards_board_entity     | table    |                   |                   | 
+ public | user_entity_favorite_projects_project_entity | table    |                   |                   | 
+ public | user_entity_id_seq                           | sequence |                   |                   | 
+ public | user_entity_projects_project_entity          | table    |                   |                   | 
+(23 rows)
+
+
+jira-clone=# \d user_entity
+
+                                           Table "public.user_entity"
+       Column       |           Type           | Collation | Nullable |                 Default                 
+--------------------+--------------------------+-----------+----------+-----------------------------------------
+ id                 | integer                  |           | not null | nextval('user_entity_id_seq'::regclass)
+ createdAt          | timestamp with time zone |           | not null | now()
+ updatedAt          | timestamp with time zone |           | not null | now()
+ name               | character varying(64)    |           | not null | 
+ username           | character varying(24)    |           | not null | 
+ email              | character varying        |           | not null | 
+ password           | character varying(128)   |           |          | 
+
+
+jira-clone=#  SELECT * FROM user_entity;
+
+ id | createdAt | updatedAt | name | username | email | password | hashedRefreshToken | isTwoFactorEnabled | twoFactorSecret | locale | isActive | isEmailConfirmed | isOAuthAccount | isGoogleAccount | isGithubAccount | color | position | department | organisation | location | avatarId | headerId | teamsLeaderId 
+----+-----------+-----------+------+----------+-------+----------+--------------------+--------------------+-----------------+--------+----------+------------------+----------------+-----------------+-----------------+-------+----------+------------+--------------+----------+----------+----------+---------------
+(0 rows)
+
+
+email: TEST@TEST.TEST
+password: TEST
+
+$2b$10$NC4fconN1xUP2kaRp5ZAauqLqq4WoV/8tMwCtUtD0S5BCP2ZEv1Uq
+
+INSERT INTO user_entity  (name, username, email, password)  VALUES ('TEST', 'TESTNAME', 'TEST@TEST.TEST','$2b$10$NC4fconN1xUP2kaRp5ZAauqLqq4WoV/8tMwCtUtD0S5BCP2ZEv1Uq');
+
+
+jira-clone=#  SELECT * FROM user_entity;
+ id |           createdAt           |           updatedAt           | name | username |     email      |                           password                           | hashedRefreshToken | isTwoFactorEnabled | twoFactorSecret | locale | isActive | isEmailConfirmed | isOAuthAccount | isGoogleAccount | isGithubAccount |  color  | position | department | organisation | location | avatarId | headerId | teamsLeaderId 
+----+-------------------------------+-------------------------------+------+----------+----------------+--------------------------------------------------------------+--------------------+--------------------+-----------------+--------+----------+------------------+----------------+-----------------+-----------------+---------+----------+------------+--------------+----------+----------+----------+---------------
+  1 | 2025-03-06 17:04:50.417089+09 | 2025-03-06 17:04:50.417089+09 | TEST | TESTNAME | TEST@TEST.TEST | $2b$10$NC4fconN1xUP2kaRp5ZAauqLqq4WoV/8tMwCtUtD0S5BCP2ZEv1Uq |                    | f                  |                 |        | t        | f                | f              | f               | f               | #b3e6ff |          |            |              |          |          |          |              
+(1 row)
+

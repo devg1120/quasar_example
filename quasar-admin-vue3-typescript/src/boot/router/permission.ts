@@ -1,0 +1,62 @@
+import { boot } from "quasar/wrappers";
+import { useRouterStore } from "src/stores/permission";
+import { useUserStore } from "src/stores/user";
+import constantRoutes from "src/router/constantRoutes";
+import { SessionStorage } from "quasar";
+import { deepClone } from "src/utils/index";
+import { asyncRoutesChildren, asyncRootRoute } from "src/router/routes";
+import constructionRouters from "src/router/utils/permissionUtils";
+import { RouteRecordRaw } from "vue-router";
+import { useUserAPI } from "src/api/services/user";
+
+export default boot(async ({ router }) => {
+  const routerStore = useRouterStore();
+  const userStore = useUserStore();
+  const { me } = useUserAPI();
+  router.beforeEach(async (to, from, next) => {
+    // Simulate obtaining token
+    const token = SessionStorage.getItem("access_token");
+    // There is a token indicating that you have logged in
+    if (token) {
+      //You cannot access the login interface after logging in
+      if (to.path === "/login") {
+        next({ path: "/" });
+      }
+      // There is user authority, and the route is not empty, then let go
+      if (
+        userStore.getUserRoles.length > 0 &&
+        routerStore.getPermissionRoutes.length
+      ) {
+        next();
+      } else {
+        if (userStore.getUserRoles.length <= 0) {
+          const { data, error } = await me();
+          if (!error.value) {
+            userStore.setUserInfo(data.value);
+          }
+        }
+        // And set the corresponding route according to the permissions
+        const accessRoutes = deepClone(asyncRoutesChildren);
+        asyncRootRoute[0].children = constructionRouters(accessRoutes);
+        routerStore.setRoutes(asyncRootRoute);
+        // If you are prompted that addRoutes is deprecated, use the spread operator to complete the operation
+        for (let item of asyncRootRoute) {
+          router.addRoute(item as RouteRecordRaw);
+        }
+        // If addRoutes is not completed, the guard will execute it again
+        next({ ...to, replace: true });
+      }
+    } else {
+      // go to a route that does not require authorization
+      if (
+        constantRoutes.some((item) => {
+          return item.path === to.path;
+        })
+      ) {
+        next();
+      } else {
+        next({ path: "/login" });
+      }
+    }
+  });
+});

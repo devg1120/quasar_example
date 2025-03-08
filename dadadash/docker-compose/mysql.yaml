@@ -1,0 +1,51 @@
+version: '3'
+
+services:
+  # Database
+  db:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: daptin
+      MYSQL_USER: daptin
+      MYSQL_PASSWORD: daptin
+    networks:
+      - daptinsite
+  # phpmyadmin
+  phpmyadmin:
+    depends_on:
+      - db
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - '7070:80'
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: password
+    networks:
+      - daptinsite
+  # daptin
+  daptin:
+    depends_on:
+      - db
+    image: daptin/daptin:latest
+    ports:
+      - '8080:8080'
+    restart: always
+    volumes:
+      - storage:/opt/daptin/storage
+    environment:
+      DAPTIN_DB_HOST: db:3306
+      DAPTIN_DB_CONNECTION_STRING: daptin:daptin@tcp(db:3306)/daptin
+      DAPTIN_DB_TYPE: mysql
+      DAPTIN_PORT: 8080
+    networks:
+      - daptinsite
+networks:
+  daptinsite:
+volumes:
+  db_data:
+  storage:

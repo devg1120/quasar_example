@@ -1,0 +1,31 @@
+
+
+BACKEND
+ 2062  cd GQA-BACKEND/
+ 2064  go mod tidy
+ 2065  go run main.go 
+
+ open-api  8888
+
+FRONTEND
+ 2027  pnpm i
+ 2029  quasar dev
+
+ open-http 9000
+
+
+---------------------------------
+db
+
+/GQA-BACKEND/config/gorm.go
+
+
+default mysql
+"gorm.io/driver/mysql"
+"gorm.io/driver/postgres"
+
+
+https://gorm.io/ja_JP/docs/connecting_to_the_database.html
+
+
+

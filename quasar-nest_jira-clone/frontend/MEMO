@@ -1,0 +1,12 @@
+yarn global add @quasar/cli
+
+yarn
+export NODE_OPTIONS=--openssl-legacy-provider
+
+quasar dev
+
+
+
+http://127.0.0.1:8080/
+
+

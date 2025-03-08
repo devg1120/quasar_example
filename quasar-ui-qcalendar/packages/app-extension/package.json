@@ -1,0 +1,44 @@
+{
+  "name": "@quasar/quasar-app-extension-qcalendar",
+  "version": "4.1.2",
+  "description": "A Quasar App Extension for @quasar/quasar-ui-qcalendar",
+  "author": "Jeff Galbraith <jeff@quasar.dev>",
+  "license": "MIT",
+  "type": "module",
+  "main": "src/index.js",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/hawkeye64"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": "https://github.com/quasarframework/quasar-ui-qcalendar/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quasarframework/quasar-ui-qcalendar.git"
+  },
+  "homepage": "https://github.com/quasarframework/quasar-ui-qcalendar",
+  "keywords": [
+    "quasar",
+    "quasarframework",
+    "app",
+    "app extension",
+    "extension",
+    "calendar",
+    "daily",
+    "weekly",
+    "monthly",
+    "events",
+    "reminders",
+    "schedule"
+  ],
+  "dependencies": {
+    "@quasar/quasar-ui-qcalendar": "^4.1.2"
+  },
+  "engines": {
+    "node": "^28 || ^26 || ^24 || ^22 || ^20 || ^18",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  }
+}
